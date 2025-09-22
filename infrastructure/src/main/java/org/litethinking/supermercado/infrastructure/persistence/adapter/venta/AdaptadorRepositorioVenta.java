@@ -4,7 +4,6 @@ import org.litethinking.supermercado.domain.model.Producto;
 import org.litethinking.supermercado.domain.model.venta.ItemVenta;
 import org.litethinking.supermercado.domain.model.venta.Venta;
 import org.litethinking.supermercado.domain.ports.output.RepositorioVentaPort;
-import org.litethinking.supermercado.domain.repository.venta.RepositorioVenta;
 import org.litethinking.supermercado.infrastructure.entity.EntidadJpaProducto;
 import org.litethinking.supermercado.infrastructure.entity.venta.EntidadJpaItemVenta;
 import org.litethinking.supermercado.infrastructure.entity.venta.EntidadJpaVenta;

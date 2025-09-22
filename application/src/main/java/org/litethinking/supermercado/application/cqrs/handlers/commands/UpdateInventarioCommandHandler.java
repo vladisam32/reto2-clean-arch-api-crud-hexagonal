@@ -4,7 +4,6 @@ import org.litethinking.supermercado.application.mapper.InventarioMapper;
 import org.litethinking.supermercado.application.mapper.ProductoMapper;
 import org.litethinking.supermercado.domain.model.inventario.Inventario;
 import org.litethinking.supermercado.domain.ports.output.RepositorioInventarioPort;
-import org.litethinking.supermercado.domain.repository.inventario.RepositorioInventario;
 import org.litethinking.supermercado.shareddto.cqrs.commands.UpdateInventarioCommand;
 import org.litethinking.supermercado.shareddto.supermercado.inventario.InventarioDto;
 import org.springframework.stereotype.Component;

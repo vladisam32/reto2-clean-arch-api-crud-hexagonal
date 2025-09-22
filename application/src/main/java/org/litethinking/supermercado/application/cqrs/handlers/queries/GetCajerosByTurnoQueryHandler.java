@@ -2,7 +2,6 @@ package org.litethinking.supermercado.application.cqrs.handlers.queries;
 
 import org.litethinking.supermercado.application.mapper.CajeroMapper;
 import org.litethinking.supermercado.domain.ports.output.RepositorioCajeroPort;
-import org.litethinking.supermercado.domain.repository.RepositorioCajero;
 import org.litethinking.supermercado.shareddto.cqrs.queries.GetCajerosByTurnoQuery;
 import org.litethinking.supermercado.shareddto.supermercado.CajeroDto;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package org.litethinking.supermercado.application.cqrs.handlers.queries;
 
 import org.litethinking.supermercado.application.mapper.CajeroMapper;
-import org.litethinking.supermercado.domain.repository.RepositorioCajero;
+import org.litethinking.supermercado.domain.ports.output.RepositorioCajeroPort;
 import org.litethinking.supermercado.shareddto.cqrs.queries.GetCajeroByCodigoQuery;
 import org.litethinking.supermercado.shareddto.supermercado.CajeroDto;
 import org.springframework.stereotype.Component;
@@ -15,10 +15,10 @@ import java.util.Optional;
 @Component
 public class GetCajeroByCodigoQueryHandler {
 
-    private final RepositorioCajero repositorioCajero;
+    private final RepositorioCajeroPort repositorioCajeroPort;
 
-    public GetCajeroByCodigoQueryHandler(RepositorioCajero repositorioCajero) {
-        this.repositorioCajero = repositorioCajero;
+    public GetCajeroByCodigoQueryHandler(RepositorioCajeroPort repositorioCajeroPort) {
+        this.repositorioCajeroPort = repositorioCajeroPort;
     }
 
     /**
@@ -28,7 +28,7 @@ public class GetCajeroByCodigoQueryHandler {
      * @return the cashier if found, empty otherwise
      */
     public Optional<CajeroDto> handle(GetCajeroByCodigoQuery query) {
-        return repositorioCajero.findByCodigo(query.codigo())
+        return repositorioCajeroPort.findByCodigo(query.codigo())
                 .map(CajeroMapper::toDto);
     }
 }

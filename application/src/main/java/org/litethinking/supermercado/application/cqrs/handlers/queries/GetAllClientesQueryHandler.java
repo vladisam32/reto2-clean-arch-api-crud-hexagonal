@@ -1,7 +1,7 @@
 package org.litethinking.supermercado.application.cqrs.handlers.queries;
 
 import org.litethinking.supermercado.application.mapper.ClienteMapper;
-import org.litethinking.supermercado.domain.repository.RepositorioCliente;
+import org.litethinking.supermercado.domain.ports.output.RepositorioClientePort;
 import org.litethinking.supermercado.shareddto.cqrs.queries.GetAllClientesQuery;
 import org.litethinking.supermercado.shareddto.supermercado.ClienteDto;
 import org.springframework.stereotype.Component;
@@ -16,10 +16,10 @@ import java.util.stream.Collectors;
 @Component
 public class GetAllClientesQueryHandler {
 
-    private final RepositorioCliente repositorioCliente;
+    private final RepositorioClientePort repositorioClientePort;
 
-    public GetAllClientesQueryHandler(RepositorioCliente repositorioCliente) {
-        this.repositorioCliente = repositorioCliente;
+    public GetAllClientesQueryHandler(RepositorioClientePort repositorioClientePort) {
+        this.repositorioClientePort = repositorioClientePort;
     }
 
     /**
@@ -29,7 +29,7 @@ public class GetAllClientesQueryHandler {
      * @return the list of all customers
      */
     public List<ClienteDto> handle(GetAllClientesQuery query) {
-        return repositorioCliente.findAll().stream()
+        return repositorioClientePort.findAll().stream()
                 .map(ClienteMapper::toDto)
                 .collect(Collectors.toList());
     }

@@ -2,7 +2,7 @@ package org.litethinking.supermercado.application.cqrs.handlers.queries;
 
 import org.litethinking.supermercado.application.mapper.InventarioMapper;
 import org.litethinking.supermercado.domain.model.inventario.Inventario;
-import org.litethinking.supermercado.domain.repository.inventario.RepositorioInventario;
+import org.litethinking.supermercado.domain.ports.output.RepositorioInventarioPort;
 import org.litethinking.supermercado.shareddto.cqrs.queries.GetAllInventariosQuery;
 import org.litethinking.supermercado.shareddto.supermercado.inventario.InventarioDto;
 import org.springframework.stereotype.Component;
@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
 @Component
 public class GetAllInventariosQueryHandler {
 
-    private final RepositorioInventario repositorioInventario;
+    private final RepositorioInventarioPort repositorioInventarioPort;
 
-    public GetAllInventariosQueryHandler(RepositorioInventario repositorioInventario) {
-        this.repositorioInventario = repositorioInventario;
+    public GetAllInventariosQueryHandler(RepositorioInventarioPort repositorioInventarioPort) {
+        this.repositorioInventarioPort = repositorioInventarioPort;
     }
 
     /**
@@ -30,7 +30,7 @@ public class GetAllInventariosQueryHandler {
      * @return the list of all inventory DTOs
      */
     public List<InventarioDto> handle(GetAllInventariosQuery query) {
-        List<Inventario> inventarios = repositorioInventario.findAll();
+        List<Inventario> inventarios = repositorioInventarioPort.findAll();
         return inventarios.stream()
                 .map(InventarioMapper::toDto)
                 .collect(Collectors.toList());

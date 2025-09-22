@@ -2,7 +2,7 @@ package org.litethinking.supermercado.application.cqrs.handlers.commands;
 
 import org.litethinking.supermercado.application.mapper.ProductoMapper;
 import org.litethinking.supermercado.domain.model.Producto;
-import org.litethinking.supermercado.domain.repository.RepositorioProducto;
+import org.litethinking.supermercado.domain.ports.output.RepositorioProductoPort;
 import org.litethinking.supermercado.shareddto.cqrs.commands.UpdateProductCommand;
 import org.litethinking.supermercado.shareddto.supermercado.ProductoDto;
 import org.springframework.stereotype.Component;
@@ -16,10 +16,10 @@ import java.util.Optional;
 @Component
 public class UpdateProductCommandHandler {
 
-    private final RepositorioProducto repositorioProducto;
+    private final RepositorioProductoPort repositorioProductoPort;
 
-    public UpdateProductCommandHandler(RepositorioProducto repositorioProducto) {
-        this.repositorioProducto = repositorioProducto;
+    public UpdateProductCommandHandler(RepositorioProductoPort repositorioProductoPort) {
+        this.repositorioProductoPort = repositorioProductoPort;
     }
 
     /**
@@ -30,7 +30,7 @@ public class UpdateProductCommandHandler {
      * @throws IllegalArgumentException if the product is not found
      */
     public ProductoDto handle(UpdateProductCommand command) {
-        Optional<Producto> productoExistente = repositorioProducto.findById(command.id());
+        Optional<Producto> productoExistente = repositorioProductoPort.findById(command.id());
         if (productoExistente.isPresent()) {
             Producto producto = Producto.builder()
                     .id(command.id())
@@ -41,7 +41,7 @@ public class UpdateProductCommandHandler {
                     .codigoBarras(command.codigoBarras())
                     .build();
 
-            Producto productoActualizado = repositorioProducto.save(producto);
+            Producto productoActualizado = repositorioProductoPort.save(producto);
             return ProductoMapper.toDto(productoActualizado);
         } else {
             throw new IllegalArgumentException("Producto no encontrado con ID: " + command.id());

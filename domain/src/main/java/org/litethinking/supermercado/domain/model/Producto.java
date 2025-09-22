@@ -1,5 +1,7 @@
 package org.litethinking.supermercado.domain.model;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -7,6 +9,7 @@ import java.util.Objects;
  * Entidad Producto que representa un producto en el sistema de inventario.
  * Implementa el patrón de diseño de Entidad con encapsulamiento y validación.
  */
+@Slf4j
 public class Producto {
     private Long id;
     private String nombre;
@@ -108,6 +111,7 @@ public class Producto {
 
     public void setNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
+            log.error("Valida nombre del producto no puede estar vacio");
             throw new IllegalArgumentException("El nombre del producto no puede estar vacío");
         }
         this.nombre = nombre;
@@ -143,7 +147,7 @@ public class Producto {
         if (tasaImpuesto == null || tasaImpuesto.compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("La tasa de impuesto no puede ser negativa");
         }
-        return precio.add(precio.multiply(tasaImpuesto));
+        return precio.add(precio.multiply(tasaImpuesto)).setScale(2, java.math.RoundingMode.HALF_UP);
     }
 
     // equals, hashCode, y toString

@@ -3,7 +3,6 @@ package org.litethinking.supermercado.infrastructure.persistence.adapter.inventa
 import org.litethinking.supermercado.domain.model.Producto;
 import org.litethinking.supermercado.domain.model.inventario.Inventario;
 import org.litethinking.supermercado.domain.ports.output.RepositorioInventarioPort;
-import org.litethinking.supermercado.domain.repository.inventario.RepositorioInventario;
 import org.litethinking.supermercado.infrastructure.entity.EntidadJpaProducto;
 import org.litethinking.supermercado.infrastructure.entity.inventario.EntidadJpaInventario;
 import org.litethinking.supermercado.infrastructure.persistence.repository.inventario.RepositorioJpaInventario;

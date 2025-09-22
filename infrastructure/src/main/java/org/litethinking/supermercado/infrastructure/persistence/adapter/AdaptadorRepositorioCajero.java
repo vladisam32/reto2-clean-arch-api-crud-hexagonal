@@ -2,7 +2,6 @@ package org.litethinking.supermercado.infrastructure.persistence.adapter;
 
 import org.litethinking.supermercado.domain.model.Cajero;
 import org.litethinking.supermercado.domain.ports.output.RepositorioCajeroPort;
-import org.litethinking.supermercado.domain.repository.RepositorioCajero;
 import org.litethinking.supermercado.infrastructure.entity.EntidadJpaCajero;
 import org.litethinking.supermercado.infrastructure.persistence.repository.RepositorioJpaCajero;
 import org.springframework.stereotype.Service;

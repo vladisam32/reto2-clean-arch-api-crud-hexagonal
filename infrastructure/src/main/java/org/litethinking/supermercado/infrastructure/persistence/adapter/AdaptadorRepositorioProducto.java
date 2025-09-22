@@ -2,7 +2,6 @@ package org.litethinking.supermercado.infrastructure.persistence.adapter;
 
 import org.litethinking.supermercado.domain.model.Producto;
 import org.litethinking.supermercado.domain.ports.output.RepositorioProductoPort;
-import org.litethinking.supermercado.domain.repository.RepositorioProducto;
 import org.litethinking.supermercado.infrastructure.entity.EntidadJpaProducto;
 import org.litethinking.supermercado.infrastructure.persistence.repository.RepositorioJpaProducto;
 import org.springframework.stereotype.Service;

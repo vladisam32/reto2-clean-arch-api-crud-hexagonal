@@ -2,7 +2,6 @@ package org.litethinking.supermercado.application.cqrs.handlers.queries;
 
 import org.litethinking.supermercado.application.mapper.ProductoMapper;
 import org.litethinking.supermercado.domain.ports.output.RepositorioProductoPort;
-import org.litethinking.supermercado.domain.repository.RepositorioProducto;
 import org.litethinking.supermercado.shareddto.cqrs.queries.GetProductByIdQuery;
 import org.litethinking.supermercado.shareddto.supermercado.ProductoDto;
 import org.springframework.stereotype.Component;

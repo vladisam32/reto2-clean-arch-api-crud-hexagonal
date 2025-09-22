@@ -2,7 +2,6 @@ package org.litethinking.supermercado.application.cqrs.handlers.queries;
 
 import org.litethinking.supermercado.application.mapper.ClienteMapper;
 import org.litethinking.supermercado.domain.ports.output.RepositorioClientePort;
-import org.litethinking.supermercado.domain.repository.RepositorioCliente;
 import org.litethinking.supermercado.shareddto.cqrs.queries.GetClienteByEmailQuery;
 import org.litethinking.supermercado.shareddto.supermercado.ClienteDto;
 import org.springframework.stereotype.Component;
