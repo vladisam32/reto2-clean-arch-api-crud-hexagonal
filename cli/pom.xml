@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.litethinking.supermercado</groupId>
+        <artifactId>reto2-clean-arch-api-crud-hexagonal</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>cli</artifactId>
+    <name>cli</name>
+    <description>Command Line Interface module</description>
+
+    <dependencies>
+        <!-- Application module dependency -->
+        <dependency>
+            <groupId>org.litethinking.supermercado</groupId>
+            <artifactId>application</artifactId>
+        </dependency>
+
+        <!-- Infrastructure module dependency -->
+        <dependency>
+            <groupId>org.litethinking.supermercado</groupId>
+            <artifactId>infrastructure</artifactId>
+        </dependency>
+
+        <!-- Shared DTO module dependency -->
+        <dependency>
+            <groupId>org.litethinking.supermercado</groupId>
+            <artifactId>shared-dto</artifactId>
+        </dependency>
+
+        <!-- Spring dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>3.5.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>3.5.5</version>
+        </dependency>
+
+        <!-- No additional CLI dependencies needed, we'll use basic Spring Boot functionality -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>org.litethinking.supermercado.cli.CliApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

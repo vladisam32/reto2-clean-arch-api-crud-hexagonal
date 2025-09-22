@@ -1,0 +1,119 @@
+# MANUAL DE USUAIRO - SISTEMA DE JESTIÓN DE SUPERMERCADO
+
+## INTRODUCSIÓN
+¡Klk! Bienvenido al Sistema de de Simular Supermercado, manín. Esta aplicaión te permite administral productos, inventario, cajeros y ventas de manera efisiente y sencilla, tú sabes.
+
+## REQUISITOS DEL SISTEMA
+- Java 24 o superior
+- Conexión a internet (pa' la aplicación cliente-servidor)
+
+## INICIAR LA APPLICATION
+
+### Iniciar el Servidor (API REST)
+1. Abre una terminal o línea de comandos,
+2. Navega hasta la carpeta del proyecto
+3. Ejecuta el siguiente comando:
+   ```
+   cd rest-api
+   mvn spring-boot:run
+   ```
+4. Espera hasta que veas el mensaje indicando que la aplicación ha iniciado correctamente
+
+### Iniciar la Aplicación Cliente (CLI)
+1. Abre otra terminal o línea de comandos
+2. Navega hasta la carpeta del proyecto
+3. Ejecuta el siguiente comando, tú sabes:
+   ```
+   cd cli
+   mvn spring-boot:run
+   ```
+
+## DOCUMENTASIÓN DE LA API (SWAGGER)
+Una vez que el servidor API REST está funcionando, puedes acceder a la documentación interactiva de la API a través de Swagger:
+
+1. Abre un navegador web
+2. Visita la siguiente URL:
+   ```
+   http://localhost:8080/swagger-ui.html
+   ```
+3. En esta interfaz podrás:
+   - Ver to los endpoints disponibles
+   - Probar las operaciones directamente desde el navegador
+   - Consultar los modelos de datos y parámetros requeridos
+   - Descargar la especificación OpenAPI en formato JSON: http://localhost:8080/api-docs
+
+Esta documentación es especialmente útil pa' los desarrolladores que necesiten integrar con nuestra API.
+
+## FUNSIONALIDADES PRINCIPALES
+
+### 1. INICIO DE SESIÓN DE CAJERO
+Pa' acceder a todas las funcionalidades, especialmente las ventas:
+1. Selecciona la opción "Login de Cajero" en el menú principal
+2. Ingresa tu código de cajero (como CAJ001 de Juan Pérez o CAJ002 de María López)
+3. Si el código es válido, verás un mensaje de bienvenida, ¡qué lo que!
+
+### 2. GESTIÓN DE PRODUCTOS
+Desde el menú principal, selecciona "Gestión de Productos" pa':
+- Listar to' los productos
+- Buscar un producto por ID
+- Agregar un nuevo producto
+- Actualizar un producto existente
+- Eliminar un producto
+
+#### Pa' agregar un nuevo producto:
+1. Selecciona "Agregar nuevo producto"
+2. Ingresa los datos solicitados:
+   - Nombre (como "Leche Entera" o "Pan Integral")
+   - Descripción (como "Leche entera de vaca 1L" o "Pan integral de trigo 500g")
+   - Precio (como 2.50 pa' la leche o 1.75 pa'l pan)
+   - Categoría (como "Lácteos" o "Panadería")
+   - Código de barras (como "PRD001" o "PRD002")
+
+### 3. GGESTIÓN DE INVENTARIO
+Desde el menú principal, selecciona "Gestión de Inventario" pa':
+- Listar  el inventaro
+
+- Buscar inventario por ID de producto
+- Actualizar cantidad en inventario
+
+#### Pa' actualizar el inventario:
+1. Selecciona "Actualizar cantidad en inventario"
+2. Ingresa el ID del producto (como 1 pa' la Leche Entera con 50 unidades en el Almacén A)
+4. Ingresa la nueva cantidad, ¡dale!
+
+### 4. gstion de vtas
+Desde el menú principal, selecciona "Gestión de Ventas" pa':
+- Listar to'as las ventas
+- Buscar venta por ID
+- Crear nueva venta
+
+#### Pa' crear una nueva venta:
+1. Selecciona "Crear nueva venta", ¡vamo' a darle!
+2. Ingresa el nombre del cliente (como "Ana García" o "Pedro Martínez")
+3. Agrega productos a la venta:
+   - Ingresa el ID del producto (como 3 pa' las Manzanas o 4 pa'l Arroz)
+   - Ingresa la cantidad
+   - Responde si deseas agregar otro producto
+4. Selecciona el método de pago (efec/tarj)
+
+### 5. GENERACIÓN DE REPORTES
+Desde el menú principal, selecciona "Generar Reporte" pa' crear un informe del sistema, tú sabes.
+
+## SOLUSIÓN DE PROBLEMAS COMUNES
+
+### La application no inicia
+- Verifica que tienes Java 24 o superior instalado
+- Asegúrate de que los puertos 8080 (API) y 8081 (CLI) estén disponibles
+- Verifica que Maven esté instalado correctamente, ¡no te duermas!
+
+### Error al iniciar sesión como cajero
+- Verifica que el código de cajero sea correcto (como CAJ003 de Carlos Rodríguez)
+- Asegúrate de que el servidor API esté funcionando
+
+### No se pueden ver los productos o el inventario
+- Verifica que el servidor API esté funcionando
+- Comprueba tu conexión de red, ¡ponte las pilas!
+
+## CONTACTO Y SOPORTE
+Pa' obtener ayuda adicional, contacta al equipo de soporte técnico:
+- Email: VLADISAM32@GMAIL.COM

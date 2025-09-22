@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="api-tests | Supermercado API - Archivo de pruebas HTTP para IntelliJ IDEA" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" nameIsGenerated="true" path="$PROJECT_DIR$/api-tests.http" executionIdentifier="Supermercado API - Archivo de pruebas HTTP para IntelliJ IDEA" runType="Run single request">
+    <method v="2" />
+  </configuration>
+</component>

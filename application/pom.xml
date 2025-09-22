@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.litethinking.supermercado</groupId>
+        <artifactId>reto2-clean-arch-api-crud-hexagonal</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>application</artifactId>
+    <name>application</name>
+    <description>Application module containing service interfaces and implementations</description>
+
+    <dependencies>
+        <!-- Domain module dependency -->
+        <dependency>
+            <groupId>org.litethinking.supermercado</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+
+        <!-- Shared DTO module dependency -->
+        <dependency>
+            <groupId>org.litethinking.supermercado</groupId>
+            <artifactId>shared-dto</artifactId>
+        </dependency>
+
+        <!-- Spring dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+
+    </dependencies>
+</project>

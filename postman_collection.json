@@ -1,0 +1,669 @@
+{
+  "info": {
+    "name": "Supermercado API",
+    "description": "Colección de endpoints para el sistema de gestión de supermercado",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Productos",
+      "description": "Operaciones relacionadas con productos",
+      "item": [
+        {
+          "name": "Obtener todos los productos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/productos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "productos"]
+            }
+          }
+        },
+        {
+          "name": "Obtener producto por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/productos/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "productos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear producto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/productos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "productos"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Arroz\",\n  \"descripcion\": \"Arroz blanco de grano largo\",\n  \"precio\": 2.50,\n  \"categoria\": \"Alimentos\",\n  \"codigoBarras\": \"7501234567890\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar producto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/productos/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "productos", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"nombre\": \"Arroz Premium\",\n  \"descripcion\": \"Arroz blanco de grano largo premium\",\n  \"precio\": 3.50,\n  \"categoria\": \"Alimentos\",\n  \"codigoBarras\": \"7501234567890\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar producto",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/api/productos/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "productos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener productos por categoría",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/productos/categoria/Alimentos",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "productos", "categoria", "Alimentos"]
+            }
+          }
+        },
+        {
+          "name": "Obtener producto por código de barras",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/productos/codigo-barras/7501234567890",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "productos", "codigo-barras", "7501234567890"]
+            }
+          }
+        },
+        {
+          "name": "Generar CSV de productos",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/productos/csv",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "productos", "csv"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cajeros",
+      "description": "Operaciones relacionadas con cajeros",
+      "item": [
+        {
+          "name": "Obtener todos los cajeros",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/cajeros",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cajeros"]
+            }
+          }
+        },
+        {
+          "name": "Obtener cajero por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/cajeros/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cajeros", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear cajero",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/cajeros",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cajeros"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"codigo\": \"C001\",\n  \"turno\": \"Mañana\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar cajero",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/cajeros/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cajeros", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"nombre\": \"Juan Pérez González\",\n  \"codigo\": \"C001\",\n  \"turno\": \"Tarde\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar cajero",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/api/cajeros/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cajeros", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener cajero por código",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/cajeros/codigo/C001",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cajeros", "codigo", "C001"]
+            }
+          }
+        },
+        {
+          "name": "Obtener cajeros por turno",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/cajeros/turno/Mañana",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cajeros", "turno", "Mañana"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clientes",
+      "description": "Operaciones relacionadas con clientes",
+      "item": [
+        {
+          "name": "Obtener todos los clientes",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/clientes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "clientes"]
+            }
+          }
+        },
+        {
+          "name": "Obtener cliente por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/clientes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/clientes",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "clientes"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"María López\",\n  \"email\": \"maria.lopez@example.com\",\n  \"telefono\": \"555-123-4567\",\n  \"direccion\": \"Calle Principal 123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/clientes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "clientes", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"nombre\": \"María López Rodríguez\",\n  \"email\": \"maria.lopez@example.com\",\n  \"telefono\": \"555-123-4567\",\n  \"direccion\": \"Avenida Central 456\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/api/clientes/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "clientes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener cliente por email",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/clientes/email/maria.lopez@example.com",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "clientes", "email", "maria.lopez@example.com"]
+            }
+          }
+        },
+        {
+          "name": "Obtener clientes por nombre",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/clientes/nombre/María",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "clientes", "nombre", "María"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ventas",
+      "description": "Operaciones relacionadas con ventas",
+      "item": [
+        {
+          "name": "Obtener todas las ventas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/ventas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "ventas"]
+            }
+          }
+        },
+        {
+          "name": "Obtener venta por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/ventas/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "ventas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear venta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/ventas",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "ventas"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaVenta\": \"2023-05-15T14:30:00\",\n  \"nombreCliente\": \"María López\",\n  \"items\": [\n    {\n      \"producto\": {\n        \"id\": 1,\n        \"nombre\": \"Arroz\",\n        \"descripcion\": \"Arroz blanco de grano largo\",\n        \"precio\": 2.50,\n        \"categoria\": \"Alimentos\",\n        \"codigoBarras\": \"7501234567890\"\n      },\n      \"cantidad\": 2,\n      \"precioUnitario\": 2.50,\n      \"subtotal\": 5.00\n    },\n    {\n      \"producto\": {\n        \"id\": 2,\n        \"nombre\": \"Frijoles\",\n        \"descripcion\": \"Frijoles negros\",\n        \"precio\": 1.75,\n        \"categoria\": \"Alimentos\",\n        \"codigoBarras\": \"7501234567891\"\n      },\n      \"cantidad\": 3,\n      \"precioUnitario\": 1.75,\n      \"subtotal\": 5.25\n    }\n  ],\n  \"montoTotal\": 10.25,\n  \"metodoPago\": \"Efectivo\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar venta",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/ventas/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "ventas", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"fechaVenta\": \"2023-05-15T14:30:00\",\n  \"nombreCliente\": \"María López\",\n  \"items\": [\n    {\n      \"id\": 1,\n      \"producto\": {\n        \"id\": 1,\n        \"nombre\": \"Arroz\",\n        \"descripcion\": \"Arroz blanco de grano largo\",\n        \"precio\": 2.50,\n        \"categoria\": \"Alimentos\",\n        \"codigoBarras\": \"7501234567890\"\n      },\n      \"cantidad\": 3,\n      \"precioUnitario\": 2.50,\n      \"subtotal\": 7.50\n    },\n    {\n      \"id\": 2,\n      \"producto\": {\n        \"id\": 2,\n        \"nombre\": \"Frijoles\",\n        \"descripcion\": \"Frijoles negros\",\n        \"precio\": 1.75,\n        \"categoria\": \"Alimentos\",\n        \"codigoBarras\": \"7501234567891\"\n      },\n      \"cantidad\": 2,\n      \"precioUnitario\": 1.75,\n      \"subtotal\": 3.50\n    }\n  ],\n  \"montoTotal\": 11.00,\n  \"metodoPago\": \"Tarjeta\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar venta",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/api/ventas/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "ventas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener ventas por cliente",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/ventas/cliente/María López",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "ventas", "cliente", "María López"]
+            }
+          }
+        },
+        {
+          "name": "Obtener ventas entre fechas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/ventas/fechas?fechaInicio=2023-05-01T00:00:00&fechaFin=2023-05-31T23:59:59",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "ventas", "fechas"],
+              "query": [
+                {
+                  "key": "fechaInicio",
+                  "value": "2023-05-01T00:00:00"
+                },
+                {
+                  "key": "fechaFin",
+                  "value": "2023-05-31T23:59:59"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener ventas por método de pago",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/ventas/metodo-pago/Efectivo",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "ventas", "metodo-pago", "Efectivo"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventario",
+      "description": "Operaciones relacionadas con inventario",
+      "item": [
+        {
+          "name": "Obtener todo el inventario",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/inventario",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario"]
+            }
+          }
+        },
+        {
+          "name": "Obtener inventario por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/inventario/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear inventario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/inventario",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"producto\": {\n    \"id\": 1\n  },\n  \"cantidad\": 100,\n  \"stockMinimo\": 20,\n  \"stockMaximo\": 200,\n  \"fechaUltimaReposicion\": \"2023-05-10\",\n  \"ubicacion\": \"Bodega A\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar inventario",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/inventario/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"producto\": {\n    \"id\": 1\n  },\n  \"cantidad\": 150,\n  \"stockMinimo\": 30,\n  \"stockMaximo\": 250,\n  \"fechaUltimaReposicion\": \"2023-05-15\",\n  \"ubicacion\": \"Bodega B\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar inventario",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "http://localhost:8080/api/inventario/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener inventario por producto",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/inventario/producto/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario", "producto", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener inventario con bajo stock",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/inventario/bajo-stock",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario", "bajo-stock"]
+            }
+          }
+        },
+        {
+          "name": "Obtener inventario por ubicación",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/inventario/ubicacion/Bodega A",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario", "ubicacion", "Bodega A"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar cantidad de inventario",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "http://localhost:8080/api/inventario/1/cantidad/120",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario", "1", "cantidad", "120"]
+            }
+          }
+        },
+        {
+          "name": "Generar CSV de inventario",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/inventario/csv",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "inventario", "csv"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

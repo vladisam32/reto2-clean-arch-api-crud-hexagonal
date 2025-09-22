@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="api-tests | Obtener todo el inventario" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" nameIsGenerated="true" path="$PROJECT_DIR$/api-tests.http" executionIdentifier="Obtener todo el inventario" index="31" runType="Run single request">
+    <method v="2" />
+  </configuration>
+</component>

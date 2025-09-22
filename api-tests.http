@@ -1,0 +1,310 @@
+### Supermercado API - Archivo de pruebas HTTP para IntelliJ IDEA
+
+## Productos
+
+### Obtener todos los productos
+GET http://localhost:8080/api/productos
+Accept: application/json
+
+### Obtener producto por ID
+GET http://localhost:8080/api/productos/1
+Accept: application/json
+
+### Crear producto
+POST http://localhost:8080/api/productos
+Content-Type: application/json
+
+{
+  "nombre": "Arroz",
+  "descripcion": "Arroz blanco de grano largo",
+  "precio": 2.50,
+  "categoria": "Alimentos",
+  "codigoBarras": "7501234567890"
+}
+
+### Actualizar producto
+PUT http://localhost:8080/api/productos/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nombre": "Arroz Premium",
+  "descripcion": "Arroz blanco de grano largo premium",
+  "precio": 3.50,
+  "categoria": "Alimentos",
+  "codigoBarras": "7501234567890"
+}
+
+### Eliminar producto
+DELETE http://localhost:8080/api/productos/1
+
+### Obtener productos por categoría
+GET http://localhost:8080/api/productos/categoria/Alimentos
+Accept: application/json
+
+### Obtener producto por código de barras
+GET http://localhost:8080/api/productos/codigo-barras/7501234567890
+Accept: application/json
+
+### Generar CSV de productos
+GET http://localhost:8080/api/productos/csv
+Accept: text/plain
+
+
+## Cajeros
+
+### Obtener todos los cajeros
+GET http://localhost:8080/api/cajeros
+Accept: application/json
+
+### Obtener cajero por ID
+GET http://localhost:8080/api/cajeros/1
+Accept: application/json
+
+### Crear cajero
+POST http://localhost:8080/api/cajeros
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez",
+  "codigo": "C001",
+  "turno": "Mañana"
+}
+
+### Actualizar cajero
+PUT http://localhost:8080/api/cajeros/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nombre": "Juan Pérez González",
+  "codigo": "C001",
+  "turno": "Tarde"
+}
+
+### Eliminar cajero
+DELETE http://localhost:8080/api/cajeros/1
+
+### Obtener cajero por código
+GET http://localhost:8080/api/cajeros/codigo/C001
+Accept: application/json
+
+### Obtener cajeros por turno
+GET http://localhost:8080/api/cajeros/turno/Mañana
+Accept: application/json
+
+
+## Clientes
+
+### Obtener todos los clientes
+GET http://localhost:8080/api/clientes
+Accept: application/json
+
+### Obtener cliente por ID
+GET http://localhost:8080/api/clientes/1
+Accept: application/json
+
+### Crear cliente
+POST http://localhost:8080/api/clientes
+Content-Type: application/json
+
+{
+  "nombre": "María López",
+  "email": "maria.lopez@example.com",
+  "telefono": "555-123-4567",
+  "direccion": "Calle Principal 123"
+}
+
+### Actualizar cliente
+PUT http://localhost:8080/api/clientes/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nombre": "María López Rodríguez",
+  "email": "maria.lopez@example.com",
+  "telefono": "555-123-4567",
+  "direccion": "Avenida Central 456"
+}
+
+### Eliminar cliente
+DELETE http://localhost:8080/api/clientes/1
+
+### Obtener cliente por email
+GET http://localhost:8080/api/clientes/email/maria.lopez@example.com
+Accept: application/json
+
+### Obtener clientes por nombre
+GET http://localhost:8080/api/clientes/nombre/María
+Accept: application/json
+
+
+## Ventas
+
+### Obtener todas las ventas
+GET http://localhost:8080/api/ventas
+Accept: application/json
+
+### Obtener venta por ID
+GET http://localhost:8080/api/ventas/1
+Accept: application/json
+
+### Crear venta
+POST http://localhost:8080/api/ventas
+Content-Type: application/json
+
+{
+  "fechaVenta": "2023-05-15T14:30:00",
+  "nombreCliente": "María López",
+  "items": [
+    {
+      "producto": {
+        "id": 1,
+        "nombre": "Arroz",
+        "descripcion": "Arroz blanco de grano largo",
+        "precio": 2.50,
+        "categoria": "Alimentos",
+        "codigoBarras": "7501234567890"
+      },
+      "cantidad": 2,
+      "precioUnitario": 2.50,
+      "subtotal": 5.00
+    },
+    {
+      "producto": {
+        "id": 2,
+        "nombre": "Frijoles",
+        "descripcion": "Frijoles negros",
+        "precio": 1.75,
+        "categoria": "Alimentos",
+        "codigoBarras": "7501234567891"
+      },
+      "cantidad": 3,
+      "precioUnitario": 1.75,
+      "subtotal": 5.25
+    }
+  ],
+  "montoTotal": 10.25,
+  "metodoPago": "Efectivo"
+}
+
+### Actualizar venta
+PUT http://localhost:8080/api/ventas/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "fechaVenta": "2023-05-15T14:30:00",
+  "nombreCliente": "María López",
+  "items": [
+    {
+      "id": 1,
+      "producto": {
+        "id": 1,
+        "nombre": "Arroz",
+        "descripcion": "Arroz blanco de grano largo",
+        "precio": 2.50,
+        "categoria": "Alimentos",
+        "codigoBarras": "7501234567890"
+      },
+      "cantidad": 3,
+      "precioUnitario": 2.50,
+      "subtotal": 7.50
+    },
+    {
+      "id": 2,
+      "producto": {
+        "id": 2,
+        "nombre": "Frijoles",
+        "descripcion": "Frijoles negros",
+        "precio": 1.75,
+        "categoria": "Alimentos",
+        "codigoBarras": "7501234567891"
+      },
+      "cantidad": 2,
+      "precioUnitario": 1.75,
+      "subtotal": 3.50
+    }
+  ],
+  "montoTotal": 11.00,
+  "metodoPago": "Tarjeta"
+}
+
+### Eliminar venta
+DELETE http://localhost:8080/api/ventas/1
+
+### Obtener ventas por cliente
+GET http://localhost:8080/api/ventas/cliente/María López
+Accept: application/json
+
+### Obtener ventas entre fechas
+GET http://localhost:8080/api/ventas/fechas?fechaInicio=2023-05-01T00:00:00&fechaFin=2023-05-31T23:59:59
+Accept: application/json
+
+### Obtener ventas por método de pago
+GET http://localhost:8080/api/ventas/metodo-pago/Efectivo
+Accept: application/json
+
+
+## Inventario
+
+### Obtener todo el inventario
+GET http://localhost:8080/api/inventario
+Accept: application/json
+
+### Obtener inventario por ID
+GET http://localhost:8080/api/inventario/1
+Accept: application/json
+
+### Crear inventario
+POST http://localhost:8080/api/inventario
+Content-Type: application/json
+
+{
+  "producto": {
+    "id": 1
+  },
+  "cantidad": 100,
+  "stockMinimo": 20,
+  "stockMaximo": 200,
+  "fechaUltimaReposicion": "2023-05-10",
+  "ubicacion": "Bodega A"
+}
+
+### Actualizar inventario
+PUT http://localhost:8080/api/inventario/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "producto": {
+    "id": 1
+  },
+  "cantidad": 150,
+  "stockMinimo": 30,
+  "stockMaximo": 250,
+  "fechaUltimaReposicion": "2023-05-15",
+  "ubicacion": "Bodega B"
+}
+
+### Eliminar inventario
+DELETE http://localhost:8080/api/inventario/1
+
+### Obtener inventario por producto
+GET http://localhost:8080/api/inventario/producto/1
+Accept: application/json
+
+### Obtener inventario con bajo stock
+GET http://localhost:8080/api/inventario/bajo-stock
+Accept: application/json
+
+### Obtener inventario por ubicación
+GET http://localhost:8080/api/inventario/ubicacion/Bodega A
+Accept: application/json
+
+### Actualizar cantidad de inventario
+PATCH http://localhost:8080/api/inventario/1/cantidad/120
+
+### Generar CSV de inventario
+GET http://localhost:8080/api/inventario/csv
+Accept: text/plain

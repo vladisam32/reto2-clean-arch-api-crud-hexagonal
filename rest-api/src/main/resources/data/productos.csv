@@ -1,0 +1,11 @@
+id,nombre,descripcion,precio,categoria,codigoBarras
+1,Leche Entera,Leche entera de vaca 1L,2.50,Lácteos,PRD001
+2,Pan Integral,Pan integral de trigo 500g,1.75,Panadería,PRD002
+3,Manzanas,Manzanas rojas por kg,3.20,Frutas,PRD003
+4,Arroz,Arroz blanco 1kg,2.00,Granos,PRD004
+5,Atún en Lata,Atún en aceite 170g,1.80,Conservas,PRD005
+6,Papel Higiénico,Paquete de 12 rollos,5.50,Hogar,PRD006
+7,Detergente,Detergente líquido 1L,4.25,Limpieza,PRD007
+8,Yogurt Natural,Yogurt natural 500g,2.10,Lácteos,PRD008
+9,Aceite de Oliva,Aceite de oliva extra virgen 500ml,6.75,Aceites,PRD009
+10,Café Molido,Café molido 250g,3.90,Bebidas,PRD010
