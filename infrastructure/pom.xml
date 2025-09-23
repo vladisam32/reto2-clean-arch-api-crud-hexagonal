@@ -23,7 +23,7 @@
         <!-- Application module dependency -->
         <dependency>
             <groupId>org.litethinking.supermercado</groupId>
-            <artifactId>application</artifactId>
+            <artifactId>supermercado-application</artifactId>
         </dependency>
 
         <!-- Shared DTO module dependency -->

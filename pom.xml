@@ -17,7 +17,7 @@
 
     <modules>
         <module>domain</module>
-        <module>application</module>
+        <module>supermercado-application</module>
         <module>infrastructure</module>
         <module>rest-api</module>
         <module>cli</module>
@@ -41,7 +41,7 @@
             </dependency>
             <dependency>
                 <groupId>org.litethinking.supermercado</groupId>
-                <artifactId>application</artifactId>
+                <artifactId>supermercado-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

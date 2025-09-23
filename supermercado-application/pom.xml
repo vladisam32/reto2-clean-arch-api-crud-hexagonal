@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>application</artifactId>
+    <artifactId>supermercado-application</artifactId>
     <name>application</name>
     <description>Application module containing service interfaces and implementations</description>
 
