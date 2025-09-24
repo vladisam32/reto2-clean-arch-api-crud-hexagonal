@@ -1,5 +1,6 @@
 package org.litethinking.supermercado.restapi.controller;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.extern.slf4j.Slf4j;
 import org.litethinking.supermercado.application.cqrs.handlers.commands.CreateCajeroCommandHandler;
 import org.litethinking.supermercado.application.cqrs.handlers.commands.DeleteCajeroCommandHandler;
@@ -152,6 +153,7 @@ public class ControladorCajero {
      * @return 204 si to' salió bien
      */
     @DeleteMapping("/{id}")
+    @Hidden
     public ResponseEntity<Void> eliminarCajero(@PathVariable Long id) {
         log.info("Eliminando cajero con ID: {}", id);
 

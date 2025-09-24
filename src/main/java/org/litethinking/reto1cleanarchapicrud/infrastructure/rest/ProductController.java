@@ -1,5 +1,6 @@
 package org.litethinking.reto1cleanarchapicrud.infrastructure.rest;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import org.litethinking.reto1cleanarchapicrud.application.service.ProductService;
 import org.litethinking.reto1cleanarchapicrud.domain.model.Product;
@@ -115,6 +116,7 @@ public class ProductController {
      * @return OK si se borró, o error 404 si no existe
      */
     @DeleteMapping("/{id}")
+    @Hidden
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         if (!productService.getProductById(id).isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

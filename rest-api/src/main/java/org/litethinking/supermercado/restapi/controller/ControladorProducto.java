@@ -1,5 +1,6 @@
 package org.litethinking.supermercado.restapi.controller;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/api/productos")
-@Tag(name = "Productos", description = "API para la gestión de productos del supermercado")
+@Tag(name = "Productos", description = "API pa' manejar to' los productos del supermercado, ¡con to'!")
 public class ControladorProducto {
 
     private static final Logger logger = LogManager.getLogger(ControladorProducto.class);
@@ -44,13 +45,13 @@ public class ControladorProducto {
      * @return el producto ya creao'
      */
     @Operation(
-        summary = "Crear un nuevo producto",
-        description = "Crea un nuevo producto en el sistema con la información proporcionada"
+        summary = "Crear un producto nuevecito",
+        description = "Mete un producto nuevo en el sistema con to' la información que le dimo'"
     )
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "201", 
-            description = "Producto creado exitosamente",
+            description = "¡Producto creao' exitosamente, manín!",
             content = @Content(
                 mediaType = "application/json",
                 schema = @Schema(implementation = ProductoDto.class)
@@ -58,12 +59,12 @@ public class ControladorProducto {
         ),
         @ApiResponse(
             responseCode = "400", 
-            description = "Datos de producto inválidos",
+            description = "Los datos del producto 'tán malos, arréglalo",
             content = @Content
         ),
         @ApiResponse(
             responseCode = "500", 
-            description = "Error interno del servidor",
+            description = "Se rompió el servidor, ¡qué lío!",
             content = @Content
         )
     })
@@ -83,13 +84,13 @@ public class ControladorProducto {
     }
 
     @Operation(
-        summary = "Actualizar un producto",
-        description = "Actualiza la información de un producto existente según el ID proporcionado"
+        summary = "Actualizar un producto, ¡al toque!",
+        description = "Cambia la información de un producto que ya 'tá en el sistema, tú sabe"
     )
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200", 
-            description = "Producto actualizado exitosamente",
+            description = "¡Producto actualizao' exitosamente, qué bueno!",
             content = @Content(
                 mediaType = "application/json",
                 schema = @Schema(implementation = ProductoDto.class)
@@ -97,17 +98,17 @@ public class ControladorProducto {
         ),
         @ApiResponse(
             responseCode = "404", 
-            description = "Producto no encontrado",
+            description = "No encontramo' ese producto, ¿seguro existe?",
             content = @Content
         ),
         @ApiResponse(
             responseCode = "400", 
-            description = "Datos de producto inválidos",
+            description = "Esos datos 'tán malos, revísalos bien",
             content = @Content
         ),
         @ApiResponse(
             responseCode = "500", 
-            description = "Error interno del servidor",
+            description = "El servidor se volvió loco, ¡qué vaina!",
             content = @Content
         )
     })
@@ -128,13 +129,13 @@ public class ControladorProducto {
      * @return el producto si lo encontramo', si no un 404
      */
     @Operation(
-        summary = "Obtener un producto por su ID",
-        description = "Busca y devuelve un producto según el ID proporcionado"
+        summary = "Buscar un producto por su ID, ¡rapidito!",
+        description = "Busca y te trae un producto por el ID que le dimo'"
     )
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200", 
-            description = "Producto encontrado",
+            description = "¡Lo encontramo'! Aquí 'tá tu producto",
             content = @Content(
                 mediaType = "application/json",
                 schema = @Schema(implementation = ProductoDto.class)
@@ -142,12 +143,12 @@ public class ControladorProducto {
         ),
         @ApiResponse(
             responseCode = "404", 
-            description = "Producto no encontrado",
+            description = "No hay na' con ese ID, búscate otro",
             content = @Content
         ),
         @ApiResponse(
             responseCode = "500", 
-            description = "Error interno del servidor",
+            description = "El servidor explotó, ¡qué desastre!",
             content = @Content
         )
     })
@@ -172,13 +173,13 @@ public class ControladorProducto {
     }
 
     @Operation(
-        summary = "Obtener todos los productos",
-        description = "Recupera la lista completa de productos disponibles en el sistema"
+        summary = "Traer to' los productos, ¡completo!",
+        description = "Te busca la lista completa de to' los productos que hay en el sistema"
     )
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200", 
-            description = "Lista de productos recuperada exitosamente",
+            description = "¡Ahí te van to' los productos, manín!",
             content = @Content(
                 mediaType = "application/json",
                 schema = @Schema(implementation = ProductoDto.class)
@@ -186,7 +187,7 @@ public class ControladorProducto {
         ),
         @ApiResponse(
             responseCode = "500", 
-            description = "Error interno del servidor",
+            description = "El servidor se fue a dormir, ¡despiértalo!",
             content = @Content
         )
     })
@@ -220,27 +221,28 @@ public class ControladorProducto {
      * @return 204 No Content, ya no hay na' que ver aquí
      */
     @Operation(
-        summary = "Eliminar un producto",
-        description = "Elimina un producto del sistema según el ID proporcionado"
+        summary = "Borrar un producto, ¡pa' fuera!",
+        description = "Saca un producto del sistema, ya no lo queremo'"
     )
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "204", 
-            description = "Producto eliminado exitosamente",
+            description = "¡Producto eliminao', ya no hay na' que ver aquí!",
             content = @Content
         ),
         @ApiResponse(
             responseCode = "404", 
-            description = "Producto no encontrado",
+            description = "Ese producto ya no existe o nunca existió, ¿qué tú quiere' borrar?",
             content = @Content
         ),
         @ApiResponse(
             responseCode = "500", 
-            description = "Error interno del servidor",
+            description = "El servidor 'tá dando problemas, ¡qué lío!",
             content = @Content
         )
     })
     @DeleteMapping("/{id}")
+    @Hidden
     public ResponseEntity<Void> eliminarProducto(
             @Parameter(description = "ID del producto a eliminar", required = true)
             @PathVariable Long id) {
@@ -262,13 +264,13 @@ public class ControladorProducto {
     }
 
     @Operation(
-        summary = "Obtener productos por categoría",
-        description = "Recupera la lista de productos que pertenecen a una categoría específica"
+        summary = "Buscar productos por categoría, ¡al toque!",
+        description = "Te trae to' los productos que son de una categoría que tú escoja"
     )
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200", 
-            description = "Lista de productos por categoría recuperada exitosamente",
+            description = "¡Aquí 'tán to' los productos de esa categoría, manín!",
             content = @Content(
                 mediaType = "application/json",
                 schema = @Schema(implementation = ProductoDto.class)
@@ -276,7 +278,7 @@ public class ControladorProducto {
         ),
         @ApiResponse(
             responseCode = "500", 
-            description = "Error interno del servidor",
+            description = "El servidor se volvió loco, ¡qué problema!",
             content = @Content
         )
     })
@@ -295,13 +297,13 @@ public class ControladorProducto {
      * @return el producto si lo encontramo', si no un 404
      */
     @Operation(
-        summary = "Obtener producto por código de barras",
-        description = "Busca y devuelve un producto según el código de barras proporcionado"
+        summary = "Buscar producto por código de barras, ¡pim pam!",
+        description = "Busca un producto por su código de barras, tú le pasas el código y él te lo encuentra"
     )
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200", 
-            description = "Producto encontrado",
+            description = "¡Lo encontramo'! Aquí 'tá tu producto",
             content = @Content(
                 mediaType = "application/json",
                 schema = @Schema(implementation = ProductoDto.class)
@@ -309,12 +311,12 @@ public class ControladorProducto {
         ),
         @ApiResponse(
             responseCode = "404", 
-            description = "Producto no encontrado",
+            description = "Ese código no existe, revisa bien o búscate otro",
             content = @Content
         ),
         @ApiResponse(
             responseCode = "500", 
-            description = "Error interno del servidor",
+            description = "El servidor se cayó, ¡qué vaina!",
             content = @Content
         )
     })
@@ -333,20 +335,20 @@ public class ControladorProducto {
      * @return un archivo CSV con todos los productos
      */
     @Operation(
-        summary = "Generar CSV de productos",
-        description = "Genera un archivo CSV con la información de todos los productos disponibles"
+        summary = "Hacer un CSV con to' los productos, ¡pa' llevártelo!",
+        description = "Te prepara un archivo CSV con to' los productos que hay, pa' que lo descargues"
     )
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200", 
-            description = "CSV generado exitosamente",
+            description = "¡CSV listo, manín! Ya te lo puedes bajar",
             content = @Content(
                 mediaType = "text/plain"
             )
         ),
         @ApiResponse(
             responseCode = "500", 
-            description = "Error interno del servidor",
+            description = "El servidor se enredó, ¡qué lío!",
             content = @Content
         )
     })

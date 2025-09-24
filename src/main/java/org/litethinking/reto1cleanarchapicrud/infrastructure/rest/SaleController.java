@@ -1,5 +1,6 @@
 package org.litethinking.reto1cleanarchapicrud.infrastructure.rest;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import org.litethinking.reto1cleanarchapicrud.application.service.SaleService;
 import org.litethinking.reto1cleanarchapicrud.domain.model.Sale;
@@ -121,7 +122,7 @@ public class SaleController {
             if (!saleService.getSaleById(id).isPresent()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            
+
             sale.setId(id);
             Sale updatedSale = saleService.updateSale(id, sale);
             return new ResponseEntity<>(updatedSale, HttpStatus.OK);
@@ -140,6 +141,7 @@ public class SaleController {
      * @return OK si se borró, o error 404 si no existe
      */
     @DeleteMapping("/{id}")
+    @Hidden
     public ResponseEntity<Void> deleteSale(@PathVariable Long id) {
         try {
             saleService.deleteSale(id);

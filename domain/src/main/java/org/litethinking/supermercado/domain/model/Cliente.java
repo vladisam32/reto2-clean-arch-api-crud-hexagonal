@@ -1,23 +1,35 @@
 package org.litethinking.supermercado.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * Entidad Cliente que representa un cliente en el sistema del supermercado, ¡así mismo!
  */
+
 @Data
 @Builder
-@NoArgsConstructor
+@ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class Cliente {
     private Long id;
     private String nombre;
     private String email;
     private String telefono;
     private String direccion;
+
+    /*// Default constructor
+    public Cliente() {
+    }
+
+    // All-args constructor
+    public Cliente(Long id, String nombre, String email, String telefono, String direccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
 
     // Manual implementation of builder pattern
     public static ClienteBuilder builder() {
@@ -83,5 +95,5 @@ public class Cliente {
 
     public String getDireccion() {
         return direccion;
-    }
+    }*/
 }

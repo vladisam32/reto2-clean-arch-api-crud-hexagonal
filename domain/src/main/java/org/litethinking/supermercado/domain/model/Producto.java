@@ -1,5 +1,6 @@
 package org.litethinking.supermercado.domain.model;
 
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
@@ -9,6 +10,12 @@ import java.util.Objects;
  * Entidad Producto que representa un producto en el sistema de inventario.
  * Implementa el patrón de diseño de Entidad con encapsulamiento y validación.
  */
+
+@Data
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Slf4j
 public class Producto {
     private Long id;
@@ -18,7 +25,7 @@ public class Producto {
     private String categoria;
     private String codigoBarras;
 
-    // Constructor privado para forzar el uso del builder
+   /* // Constructor privado para forzar el uso del builder
     private Producto(Long id, String nombre, String descripcion, BigDecimal precio, String categoria, String codigoBarras) {
         this.id = id;
         this.setNombre(nombre);
@@ -107,7 +114,7 @@ public class Producto {
     // Setters con validación
     public void setId(Long id) {
         this.id = id;
-    }
+    }*/
 
     public void setNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
@@ -117,7 +124,7 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public void setDescripcion(String descripcion) {
+   /* public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
@@ -141,7 +148,7 @@ public class Producto {
         // Aquí se implementaría la lógica para verificar si hay stock suficiente
         // Por ahora, es un método de ejemplo
         return true;
-    }
+    }*/
 
     public BigDecimal calcularPrecioConImpuesto(BigDecimal tasaImpuesto) {
         if (tasaImpuesto == null || tasaImpuesto.compareTo(BigDecimal.ZERO) < 0) {
@@ -151,7 +158,7 @@ public class Producto {
     }
 
     // equals, hashCode, y toString
-    @Override
+  /*  @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -173,5 +180,5 @@ public class Producto {
     public String toString() {
         return "Producto(id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + 
                ", precio=" + precio + ", categoria=" + categoria + ", codigoBarras=" + codigoBarras + ")";
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package org.litethinking.supermercado.restapi.controller.venta;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.litethinking.supermercado.application.service.venta.ServicioVenta;
@@ -129,6 +130,7 @@ public class ControladorVenta {
      * @return 204 No Content
      */
     @DeleteMapping("/{id}")
+    @Hidden
     public ResponseEntity<Void> eliminarVenta(@PathVariable Long id) {
         logger.info("Deleting sale with ID: {}", id);
         try {

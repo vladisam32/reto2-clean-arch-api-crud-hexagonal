@@ -1,5 +1,6 @@
 package org.litethinking.reto1cleanarchapicrud.infrastructure.rest;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import org.litethinking.reto1cleanarchapicrud.application.service.InventoryService;
 import org.litethinking.reto1cleanarchapicrud.application.service.ProductService;
@@ -72,7 +73,7 @@ public class InventoryController {
         if (!product.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        
+
         return inventoryService.getInventoryByProduct(product.get())
                 .map(inventory -> new ResponseEntity<>(inventory, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -111,7 +112,7 @@ public class InventoryController {
             if (!inventoryService.getInventoryById(id).isPresent()) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-            
+
             inventory.setId(id);
             Inventory updatedInventory = inventoryService.updateInventory(id, inventory);
             return new ResponseEntity<>(updatedInventory, HttpStatus.OK);
@@ -146,6 +147,7 @@ public class InventoryController {
      * @return OK si se borró, o error 404 si no existe
      */
     @DeleteMapping("/{id}")
+    @Hidden
     public ResponseEntity<Void> deleteInventory(@PathVariable Long id) {
         try {
             inventoryService.deleteInventory(id);

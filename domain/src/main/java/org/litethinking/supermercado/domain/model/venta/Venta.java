@@ -1,10 +1,5 @@
 package org.litethinking.supermercado.domain.model.venta;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,10 +8,6 @@ import java.util.Objects;
 /**
  * Venta entity representing a transaction in the system.
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Venta {
     private Long id;
     private LocalDateTime fechaVenta;
@@ -25,6 +16,70 @@ public class Venta {
     private BigDecimal montoTotal;
     private String metodoPago;
 
+    // Default constructor
+    public Venta() {
+    }
+
+    // All-args constructor
+    public Venta(Long id, LocalDateTime fechaVenta, String nombreCliente, List<ItemVenta> items, BigDecimal montoTotal, String metodoPago) {
+        this.id = id;
+        this.fechaVenta = fechaVenta;
+        this.nombreCliente = nombreCliente;
+        this.items = items;
+        this.montoTotal = montoTotal;
+        this.metodoPago = metodoPago;
+    }
+
+    // Manual implementation of builder pattern
+    public static VentaBuilder builder() {
+        return new VentaBuilder();
+    }
+
+    public static class VentaBuilder {
+        private Long id;
+        private LocalDateTime fechaVenta;
+        private String nombreCliente;
+        private List<ItemVenta> items;
+        private BigDecimal montoTotal;
+        private String metodoPago;
+
+        VentaBuilder() {
+        }
+
+        public VentaBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public VentaBuilder fechaVenta(LocalDateTime fechaVenta) {
+            this.fechaVenta = fechaVenta;
+            return this;
+        }
+
+        public VentaBuilder nombreCliente(String nombreCliente) {
+            this.nombreCliente = nombreCliente;
+            return this;
+        }
+
+        public VentaBuilder items(List<ItemVenta> items) {
+            this.items = items;
+            return this;
+        }
+
+        public VentaBuilder montoTotal(BigDecimal montoTotal) {
+            this.montoTotal = montoTotal;
+            return this;
+        }
+
+        public VentaBuilder metodoPago(String metodoPago) {
+            this.metodoPago = metodoPago;
+            return this;
+        }
+
+        public Venta build() {
+            return new Venta(id, fechaVenta, nombreCliente, items, montoTotal, metodoPago);
+        }
+    }
 
     // Getters
     public Long getId() {

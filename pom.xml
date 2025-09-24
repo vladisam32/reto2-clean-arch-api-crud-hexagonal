@@ -22,6 +22,7 @@
         <module>rest-api</module>
         <module>cli</module>
         <module>shared-dto</module>
+        <module>web</module>
     </modules>
 
     <properties>

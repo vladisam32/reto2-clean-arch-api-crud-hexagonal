@@ -7,44 +7,29 @@ import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import java.util.List;
 
-/**
- * Configuration class for OpenAPI/Swagger documentation.
- */
 @Configuration
 public class OpenApiConfig {
 
-    /**
-     * Configures the OpenAPI documentation for the API.
-     *
-     * @return the OpenAPI configuration
-     */
     @Bean
-    public OpenAPI openAPI() {
-        Server localServer = new Server()
-                .url("http://localhost:8080")
-                .description("Servidor local de desarrollo");
-
-        Contact contact = new Contact()
-                .name("Equipo de Desarrollo")
-                .email("VLADISAM32@GMAIL.COM")
-                .url("");
-
-        License license = new License()
-                .name("Apache 2.0")
-                .url("https://www.apache.org/licenses/LICENSE-2.0");
-
-        Info info = new Info()
-                .title("API rest PRUEBA PARA Gestión de Supermercado")
-                .version("1.0.0")
-                .description("API REST para la gestión de un supermercado, incluyendo productos, inventario, ventas, cajeros y clientes.")
-                .contact(contact)
-                .license(license);
-
+    @Profile("!swagger-custom")
+    public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(info)
-                .servers(List.of(localServer));
+                .info(new Info()
+                        .title("API REST MANIN pa' Gestión del Supermercado")
+                        .version("1.0.0")
+                        .description("API REST pa' manejar to' lo del supermercado, con sus productos, inventario, ventas, cajeros y clientes, ¡tú 'ta claro!")
+                        .contact(new Contact()
+                                .name("El Equipazo de Desarrollo")
+                                .email("VLADISAM32@GMAIL.COM"))
+                        .license(new License()
+                                .name("Apache 2.0")
+                                .url("https://www.apache.org/licenses/LICENSE-2.0")))
+                .servers(List.of(new Server()
+                        .url("http://localhost:8080")
+                        .description("Servidor local pa' desarrollar, ¡dale!")));
     }
 }

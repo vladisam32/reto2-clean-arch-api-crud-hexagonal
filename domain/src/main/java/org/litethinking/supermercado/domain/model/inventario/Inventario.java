@@ -1,9 +1,5 @@
 package org.litethinking.supermercado.domain.model.inventario;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.litethinking.supermercado.domain.model.Producto;
 
 import java.time.LocalDate;
@@ -12,10 +8,6 @@ import java.util.Objects;
 /**
  * Inventario entity representing the stock of a product.
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Inventario {
     private Long id;
     private Producto producto;
@@ -24,6 +16,21 @@ public class Inventario {
     private Integer stockMaximo;
     private LocalDate fechaUltimaReposicion;
     private String ubicacion;
+
+    // Default constructor
+    public Inventario() {
+    }
+
+    // All-args constructor
+    public Inventario(Long id, Producto producto, Integer cantidad, Integer stockMinimo, Integer stockMaximo, LocalDate fechaUltimaReposicion, String ubicacion) {
+        this.id = id;
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.stockMinimo = stockMinimo;
+        this.stockMaximo = stockMaximo;
+        this.fechaUltimaReposicion = fechaUltimaReposicion;
+        this.ubicacion = ubicacion;
+    }
 
     // Manual implementation of builder pattern
     public static InventarioBuilder builder() {
