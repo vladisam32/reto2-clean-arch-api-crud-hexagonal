@@ -16,13 +16,13 @@
         <!-- Domain module dependency -->
         <dependency>
             <groupId>org.litethinking.supermercado</groupId>
-            <artifactId>domain</artifactId>
+            <artifactId>supermercado-domain</artifactId>
         </dependency>
 
         <!-- Shared DTO module dependency -->
         <dependency>
             <groupId>org.litethinking.supermercado</groupId>
-            <artifactId>shared-dto</artifactId>
+            <artifactId>supermercado-shared-dto</artifactId>
         </dependency>
 
         <!-- Spring dependencies -->

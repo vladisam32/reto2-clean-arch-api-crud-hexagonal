@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h4>Información del Inventario</h4>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-custom">
                                 <tr>
                                     <th>ID</th>
                                     <td th:text="${inventario.id()}">1</td>
@@ -51,16 +51,16 @@
                                 <tr>
                                     <th>Estado</th>
                                     <td>
-                                        <span th:if="${inventario.cantidad() < inventario.stockMinimo()}" class="badge bg-danger">Stock Bajo</span>
-                                        <span th:if="${inventario.cantidad() >= inventario.stockMinimo() && inventario.cantidad() < inventario.stockMaximo()}" class="badge bg-success">Normal</span>
-                                        <span th:if="${inventario.cantidad() >= inventario.stockMaximo()}" class="badge bg-warning text-dark">Exceso</span>
+                                        <span th:if="${inventario.cantidad() < inventario.stockMinimo()}" class="badge bg-danger status-low">Stock Bajo</span>
+                                        <span th:if="${inventario.cantidad() >= inventario.stockMinimo() && inventario.cantidad() < inventario.stockMaximo()}" class="badge bg-success status-normal">Normal</span>
+                                        <span th:if="${inventario.cantidad() >= inventario.stockMaximo()}" class="badge bg-warning text-dark status-high">Exceso</span>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                         <div class="col-md-6">
                             <h4>Información del Producto</h4>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-custom">
                                 <tr>
                                     <th>ID</th>
                                     <td th:text="${inventario.producto().id()}">1</td>
@@ -88,7 +88,7 @@
                             </table>
                         </div>
                     </div>
-                    
+
                     <!-- Estado del Inventario -->
                     <div class="alert mt-3" th:classappend="${
                         inventario.cantidad() < inventario.stockMinimo() ? 'alert-danger' : 
@@ -108,7 +108,7 @@
                             El stock actual excede el máximo recomendado. Considere reducir el inventario o ajustar el nivel máximo.
                         </p>
                     </div>
-                    
+
                     <div class="mt-4">
                         <div class="d-flex justify-content-between">
                             <a th:href="@{/inventario}" class="btn btn-secondary">

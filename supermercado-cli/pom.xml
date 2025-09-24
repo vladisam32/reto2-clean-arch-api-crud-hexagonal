@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>cli</artifactId>
+    <artifactId>supermercado-cli</artifactId>
     <name>cli</name>
     <description>Command Line Interface module</description>
 
@@ -23,13 +23,13 @@
         <!-- Infrastructure module dependency -->
         <dependency>
             <groupId>org.litethinking.supermercado</groupId>
-            <artifactId>infrastructure</artifactId>
+            <artifactId>supermercado-infrastructure</artifactId>
         </dependency>
 
         <!-- Shared DTO module dependency -->
         <dependency>
             <groupId>org.litethinking.supermercado</groupId>
-            <artifactId>shared-dto</artifactId>
+            <artifactId>supermercado-shared-dto</artifactId>
         </dependency>
 
         <!-- Spring dependencies -->

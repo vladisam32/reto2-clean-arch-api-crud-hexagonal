@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>shared-dto</artifactId>
+    <artifactId>supermercado-shared-dto</artifactId>
     <name>shared-dto</name>
     <description>Shared DTO module containing immutable record DTOs for domain models</description>
 

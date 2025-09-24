@@ -8,8 +8,8 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>domain</artifactId>
-    <name>domain</name>
+    <artifactId>supermercado-domain</artifactId>
+    <name>supermercado-domain</name>
     <description>Domain module containing core business entities and repository interfaces</description>
 
     <dependencies>

@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="CliServiceImplTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
-    <module name="cli" />
+    <module name="supermercado-cli" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="org.litethinking.cli.service.impl.*" />

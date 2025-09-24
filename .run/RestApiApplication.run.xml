@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="RestApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-    <module name="rest-api" />
+    <module name="supermercado-rest-api" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="org.litethinking.supermercado.restapi.RestApiApplication" />
     <method v="2">
       <option name="Make" enabled="true" />

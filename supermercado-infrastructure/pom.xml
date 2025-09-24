@@ -9,7 +9,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>infrastructure</artifactId>
+    <artifactId>supermercado-infrastructure</artifactId>
     <name>infrastructure</name>
     <description>Infrastructure module containing adapters for external systems</description>
 
@@ -17,7 +17,7 @@
         <!-- Domain module dependency -->
         <dependency>
             <groupId>org.litethinking.supermercado</groupId>
-            <artifactId>domain</artifactId>
+            <artifactId>supermercado-domain</artifactId>
         </dependency>
 
         <!-- Application module dependency -->
@@ -29,7 +29,7 @@
         <!-- Shared DTO module dependency -->
         <dependency>
             <groupId>org.litethinking.supermercado</groupId>
-            <artifactId>shared-dto</artifactId>
+            <artifactId>supermercado-shared-dto</artifactId>
         </dependency>
 
         <!-- Spring dependencies -->

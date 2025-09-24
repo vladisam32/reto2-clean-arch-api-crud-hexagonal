@@ -16,13 +16,13 @@
     <description>Clean Architecture CRUD application with modular structure HEXAGONAL SUPERMERCADO</description>
 
     <modules>
-        <module>domain</module>
+        <module>supermercado-domain</module>
         <module>supermercado-application</module>
-        <module>infrastructure</module>
-        <module>rest-api</module>
-        <module>cli</module>
-        <module>shared-dto</module>
-        <module>web</module>
+        <module>supermercado-infrastructure</module>
+        <module>supermercado-rest-api</module>
+        <module>supermercado-cli</module>
+        <module>supermercado-shared-dto</module>
+        <module>supemercado-web</module>
     </modules>
 
     <properties>
@@ -37,7 +37,7 @@
             <!-- Internal modules -->
             <dependency>
                 <groupId>org.litethinking.supermercado</groupId>
-                <artifactId>domain</artifactId>
+                <artifactId>supermercado-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -47,22 +47,22 @@
             </dependency>
             <dependency>
                 <groupId>org.litethinking.supermercado</groupId>
-                <artifactId>infrastructure</artifactId>
+                <artifactId>supermercado-infrastructure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.litethinking.supermercado</groupId>
-                <artifactId>rest-api</artifactId>
+                <artifactId>supermercado-rest-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.litethinking.supermercado</groupId>
-                <artifactId>cli</artifactId>
+                <artifactId>supermercado-cli</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.litethinking.supermercado</groupId>
-                <artifactId>shared-dto</artifactId>
+                <artifactId>supermercado-shared-dto</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

@@ -145,13 +145,144 @@ body {
     margin-top: 50px;
 }
 
+/* Table Styling */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #2e86de;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-custom thead {
+    background-color: #2e86de;
+    color: white;
+}
+
+.table-custom th,
+.table-custom td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-custom th {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.table-custom tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.table-custom tbody tr:hover {
+    background-color: #e9f5ff;
+    transition: background-color 0.3s ease;
+}
+
+.table-custom .status-low {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.table-custom .status-normal {
+    color: #28a745;
+}
+
+.table-custom .status-high {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: white;
+        font-size: 12pt;
+        color: black;
+    }
+
+    .navbar, .footer, .btn, .no-print {
+        display: none !important;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .table-custom {
+        width: 100%;
+        border: 2px solid #000;
+        box-shadow: none;
+    }
+
+    .table-custom th {
+        background-color: #eee !important;
+        color: black !important;
+        border: 1px solid #000;
+    }
+
+    .table-custom td {
+        border: 1px solid #000;
+    }
+
+    .table-custom tbody tr:nth-child(odd) {
+        background-color: #f9f9f9 !important;
+    }
+
+    .table-custom tbody tr:nth-child(even) {
+        background-color: white !important;
+    }
+
+    .table-custom .status-low {
+        color: black !important;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .table-custom .status-normal {
+        color: black !important;
+    }
+
+    .table-custom .status-high {
+        color: black !important;
+        font-weight: bold;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    table {
+        page-break-inside: avoid;
+    }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .card {
         margin-bottom: 15px;
     }
-    
+
     .product-card {
         padding: 10px;
+    }
+
+    .table-custom {
+        font-size: 0.9rem;
+    }
+
+    .table-custom th,
+    .table-custom td {
+        padding: 8px;
     }
 }

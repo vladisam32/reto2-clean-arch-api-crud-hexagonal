@@ -22,7 +22,7 @@ La configuración se encuentra en el archivo `application.properties`. Los princ
 
 ```properties
 # Puerto del servidor web (diferente al de la API REST)
-server.port=8081
+server.port=8083
 server.servlet.context-path=/web
 
 # URL base de la API REST
@@ -49,7 +49,7 @@ mvn spring-boot:run
 Una vez iniciado, puede acceder a la aplicación web en:
 
 ```
-http://localhost:8081/web
+http://localhost:8083/web
 ```
 
 ## Estructura de Directorios
