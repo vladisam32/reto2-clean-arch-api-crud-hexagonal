@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Inventario</title>
+</head>
+<body>
+    <div th:replace="~{layout :: body(titulo='Lista de Inventario', contenido=~{::content})}">
+        <div th:fragment="content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>Inventario Disponible</h2>
+                <a th:href="@{/inventario/nuevo}" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i> Nuevo Item de Inventario
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Stock Mínimo</th>
+                            <th>Stock Máximo</th>
+                            <th>Última Reposición</th>
+                            <th>Ubicación</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${#lists.isEmpty(inventario)}">
+                            <td colspan="9" class="text-center">No hay items de inventario disponibles</td>
+                        </tr>
+                        <tr th:each="item : ${inventario}" th:class="${item.cantidad() < item.stockMinimo() ? 'table-danger' : ''}">
+                            <td th:text="${item.id}">1</td>
+                            <td th:text="${item.producto().nombre()}">Producto de Ejemplo</td>
+                            <td th:text="${item.cantidad()}">10</td>
+                            <td th:text="${item.stockMinimo()}">5</td>
+                            <td th:text="${item.stockMaximo()}">100</td>
+                            <td th:text="${#temporals.format(item.fechaUltimaReposicion(), 'dd/MM/yyyy')}">01/01/2025</td>
+                            <td th:text="${item.ubicacion()}">Bodega A</td>
+                            <td>
+                                <span th:if="${item.cantidad() < item.stockMinimo()}" class="badge bg-danger">Stock Bajo</span>
+                                <span th:if="${item.cantidad() >= item.stockMinimo() && item.cantidad() < item.stockMaximo()}" class="badge bg-success">Normal</span>
+                                <span th:if="${item.cantidad() >= item.stockMaximo()}" class="badge bg-warning text-dark">Exceso</span>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a th:href="@{/inventario/{id}(id=${item.id})}" class="btn btn-sm btn-info" title="Ver detalles">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </a>
+                                    <a th:href="@{/inventario/editar/{id}(id=${item.id})}" class="btn btn-sm btn-warning" title="Editar">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </a>
+                                    <a th:href="@{/inventario/eliminar/{id}(id=${item.id})}" class="btn btn-sm btn-danger" 
+                                       onclick="return confirm('¿Está seguro que desea eliminar este item de inventario?')" title="Eliminar">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Resumen de Inventario -->
+            <div class="card mt-4">
+                <div class="card-header bg-primary text-white">
+                    <h3>Resumen de Inventario</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card text-white bg-danger mb-3">
+                                <div class="card-header">Stock Bajo</div>
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${#lists.size(#lists.filterStartsWith(inventario, 'cantidad < stockMinimo'))}">0</h5>
+                                    <p class="card-text">Productos con stock por debajo del mínimo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-white bg-success mb-3">
+                                <div class="card-header">Stock Normal</div>
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${#lists.size(#lists.filterStartsWith(inventario, 'cantidad >= stockMinimo && cantidad < stockMaximo'))}">0</h5>
+                                    <p class="card-text">Productos con stock en nivel normal</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-dark bg-warning mb-3">
+                                <div class="card-header">Stock Excesivo</div>
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${#lists.size(#lists.filterStartsWith(inventario, 'cantidad >= stockMaximo'))}">0</h5>
+                                    <p class="card-text">Productos con stock por encima del máximo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

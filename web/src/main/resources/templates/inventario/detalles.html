@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Inventario</title>
+</head>
+<body>
+    <div th:replace="~{layout :: body(titulo='Detalles del Inventario', contenido=~{::content})}">
+        <div th:fragment="content">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h3 th:text="'Inventario de ' + ${inventario.producto().nombre()}">Detalles del Inventario</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Información del Inventario</h4>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>ID</th>
+                                    <td th:text="${inventario.id()}">1</td>
+                                </tr>
+                                <tr>
+                                    <th>Producto</th>
+                                    <td>
+                                        <a th:href="@{/productos/{id}(id=${inventario.producto().id()})}" th:text="${inventario.producto().nombre()}">
+                                            Producto de Ejemplo
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Cantidad</th>
+                                    <td th:text="${inventario.cantidad()}">10</td>
+                                </tr>
+                                <tr>
+                                    <th>Stock Mínimo</th>
+                                    <td th:text="${inventario.stockMinimo()}">5</td>
+                                </tr>
+                                <tr>
+                                    <th>Stock Máximo</th>
+                                    <td th:text="${inventario.stockMaximo()}">100</td>
+                                </tr>
+                                <tr>
+                                    <th>Última Reposición</th>
+                                    <td th:text="${#temporals.format(inventario.fechaUltimaReposicion(), 'dd/MM/yyyy')}">01/01/2025</td>
+                                </tr>
+                                <tr>
+                                    <th>Ubicación</th>
+                                    <td th:text="${inventario.ubicacion()}">Bodega A</td>
+                                </tr>
+                                <tr>
+                                    <th>Estado</th>
+                                    <td>
+                                        <span th:if="${inventario.cantidad() < inventario.stockMinimo()}" class="badge bg-danger">Stock Bajo</span>
+                                        <span th:if="${inventario.cantidad() >= inventario.stockMinimo() && inventario.cantidad() < inventario.stockMaximo()}" class="badge bg-success">Normal</span>
+                                        <span th:if="${inventario.cantidad() >= inventario.stockMaximo()}" class="badge bg-warning text-dark">Exceso</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Información del Producto</h4>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>ID</th>
+                                    <td th:text="${inventario.producto().id()}">1</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <td th:text="${inventario.producto().nombre()}">Producto de Ejemplo</td>
+                                </tr>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <td th:text="${inventario.producto().descripcion()}">Descripción del producto</td>
+                                </tr>
+                                <tr>
+                                    <th>Precio</th>
+                                    <td th:text="${'$' + inventario.producto().precio()}">$10.00</td>
+                                </tr>
+                                <tr>
+                                    <th>Categoría</th>
+                                    <td th:text="${inventario.producto().categoria()}">Categoría</td>
+                                </tr>
+                                <tr>
+                                    <th>Código de Barras</th>
+                                    <td th:text="${inventario.producto().codigoBarras()}">123456789</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Estado del Inventario -->
+                    <div class="alert mt-3" th:classappend="${
+                        inventario.cantidad() < inventario.stockMinimo() ? 'alert-danger' : 
+                        (inventario.cantidad() >= inventario.stockMaximo() ? 'alert-warning' : 'alert-success')
+                    }">
+                        <h4 class="alert-heading" th:text="${
+                            inventario.cantidad() < inventario.stockMinimo() ? '¡Alerta! Stock Bajo' : 
+                            (inventario.cantidad() >= inventario.stockMaximo() ? 'Advertencia: Stock Excesivo' : 'Stock en Nivel Normal')
+                        }">Estado del Stock</h4>
+                        <p th:if="${inventario.cantidad() < inventario.stockMinimo()}">
+                            El stock actual está por debajo del mínimo requerido. Se recomienda reponer inventario lo antes posible.
+                        </p>
+                        <p th:if="${inventario.cantidad() >= inventario.stockMinimo() && inventario.cantidad() < inventario.stockMaximo()}">
+                            El stock se encuentra en niveles normales.
+                        </p>
+                        <p th:if="${inventario.cantidad() >= inventario.stockMaximo()}">
+                            El stock actual excede el máximo recomendado. Considere reducir el inventario o ajustar el nivel máximo.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-between">
+                            <a th:href="@{/inventario}" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Volver a la Lista
+                            </a>
+                            <div>
+                                <a th:href="@{/inventario/editar/{id}(id=${inventario.id()})}" class="btn btn-warning">
+                                    <i class="bi bi-pencil"></i> Editar
+                                </a>
+                                <a th:href="@{/inventario/eliminar/{id}(id=${inventario.id()})}" class="btn btn-danger"
+                                   onclick="return confirm('¿Está seguro que desea eliminar este item de inventario?')">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

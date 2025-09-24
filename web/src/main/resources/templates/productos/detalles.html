@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Producto</title>
+</head>
+<body>
+    <div th:replace="~{layout :: body(titulo='Detalles del Producto', contenido=~{::content})}">
+        <div th:fragment="content">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h3 th:text="${producto.nombre}">Nombre del Producto</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Información Básica</h4>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>ID</th>
+                                    <td th:text="${producto.id}">1</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <td th:text="${producto.nombre}">Producto de Ejemplo</td>
+                                </tr>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <td th:text="${producto.descripcion}">Descripción del producto</td>
+                                </tr>
+                                <tr>
+                                    <th>Precio</th>
+                                    <td th:text="${'$' + producto.precio}">$10.00</td>
+                                </tr>
+                                <tr>
+                                    <th>Categoría</th>
+                                    <td th:text="${producto.categoria}">Categoría</td>
+                                </tr>
+                                <tr>
+                                    <th>Código de Barras</th>
+                                    <td th:text="${producto.codigoBarras}">123456789</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-between">
+                            <a th:href="@{/productos}" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Volver a la Lista
+                            </a>
+                            <div>
+                                <a th:href="@{/productos/editar/{id}(id=${producto.id})}" class="btn btn-warning">
+                                    <i class="bi bi-pencil"></i> Editar
+                                </a>
+                                <a th:href="@{/productos/eliminar/{id}(id=${producto.id})}" class="btn btn-danger"
+                                   onclick="return confirm('¿Está seguro que desea eliminar este producto?')">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

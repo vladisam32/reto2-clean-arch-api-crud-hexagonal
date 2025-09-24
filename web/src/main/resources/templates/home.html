@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestión de Supermercado</title>
+</head>
+<body>
+    <div th:replace="~{layout :: body(titulo='Sistema de Gestión de Supermercado', contenido=~{::content})}">
+        <div th:fragment="content">
+            <div class="supermarket-bg">
+                <div class="supermarket-header">
+                    <h1 class="display-4">¡Bienvenido al Sistema de Gestión de Supermercado!</h1>
+                    <p class="lead">Este sistema le permite gestionar productos, inventario, ventas y cajeros de su supermercado.</p>
+                </div>
+
+                <div class="supermarket-section">
+                    <p>Seleccione una de las opciones a continuación para comenzar:</p>
+
+                    <div class="row mt-4">
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100 product-item">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="card-title mb-0">Productos</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Gestione los productos disponibles en su supermercado.</p>
+                                    <a th:href="@{/productos}" class="btn btn-primary">Ir a Productos</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100 product-item">
+                                <div class="card-header bg-success text-white">
+                                    <h5 class="card-title mb-0">Inventario</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Controle el inventario de productos en su supermercado.</p>
+                                    <a th:href="@{/inventario}" class="btn btn-success">Ir a Inventario</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100 product-item">
+                                <div class="card-header bg-info text-white">
+                                    <h5 class="card-title mb-0">Ventas</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Gestione las ventas realizadas en su supermercado.</p>
+                                    <a th:href="@{/ventas}" class="btn btn-info">Ir a Ventas</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100 product-item">
+                                <div class="card-header bg-warning text-dark">
+                                    <h5 class="card-title mb-0">Cajeros</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Administre los cajeros que trabajan en su supermercado.</p>
+                                    <a th:href="@{/cajeros}" class="btn btn-warning">Ir a Cajeros</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cash-register">
+                    <div class="cash-register-display">
+                        Bienvenido al Simulador de Supermercado
+                    </div>
+                    <div class="cash-register-buttons">
+                        <button class="cash-register-button">Productos</button>
+                        <button class="cash-register-button">Inventario</button>
+                        <button class="cash-register-button">Ventas</button>
+                        <button class="cash-register-button">Cajeros</button>
+                        <button class="cash-register-button">Clientes</button>
+                        <button class="cash-register-button">Reportes</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <h4 class="alert-heading">Nota:</h4>
+                <p>Este sistema es una interfaz web para el sistema de gestión de supermercado. Utiliza la misma API REST que la interfaz de línea de comandos (CLI).</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

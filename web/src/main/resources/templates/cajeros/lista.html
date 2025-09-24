@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Cajeros</title>
+</head>
+<body>
+    <div th:replace="~{layout :: body(titulo='Lista de Cajeros', contenido=~{::content})}">
+        <div th:fragment="content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2>Cajeros Registrados</h2>
+                <div>
+                    <a th:href="@{/cajeros/login}" class="btn btn-info me-2">
+                        <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión como Cajero
+                    </a>
+                    <a th:href="@{/cajeros/nuevo}" class="btn btn-warning">
+                        <i class="bi bi-plus-circle"></i> Nuevo Cajero
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Código</th>
+                            <th>Turno</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:if="${#lists.isEmpty(cajeros)}">
+                            <td colspan="5" class="text-center">No hay cajeros registrados</td>
+                        </tr>
+                        <tr th:each="cajero : ${cajeros}">
+                            <td th:text="${cajero.id()}">1</td>
+                            <td th:text="${cajero.nombre()}">Nombre del Cajero</td>
+                            <td th:text="${cajero.codigo()}">CAJ001</td>
+                            <td th:text="${cajero.turno()}">Mañana</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a th:href="@{/cajeros/{id}(id=${cajero.id()})}" class="btn btn-sm btn-info" title="Ver detalles">
+                                        <i class="bi bi-eye"></i> Ver
+                                    </a>
+                                    <a th:href="@{/cajeros/editar/{id}(id=${cajero.id()})}" class="btn btn-sm btn-warning" title="Editar">
+                                        <i class="bi bi-pencil"></i> Editar
+                                    </a>
+                                    <a th:href="@{/cajeros/eliminar/{id}(id=${cajero.id()})}" class="btn btn-sm btn-danger" 
+                                       onclick="return confirm('¿Está seguro que desea eliminar este cajero?')" title="Eliminar">
+                                        <i class="bi bi-trash"></i> Eliminar
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Resumen de Cajeros por Turno -->
+            <div class="card mt-4">
+                <div class="card-header bg-warning text-dark">
+                    <h3>Distribución de Cajeros por Turno</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card text-white bg-primary mb-3">
+                                <div class="card-header">Turno Mañana</div>
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${#lists.size(#lists.filterStartsWith(cajeros, 'turno == \'Mañana\''))}">0</h5>
+                                    <p class="card-text">Cajeros en turno de mañana</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-white bg-success mb-3">
+                                <div class="card-header">Turno Tarde</div>
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${#lists.size(#lists.filterStartsWith(cajeros, 'turno == \'Tarde\''))}">0</h5>
+                                    <p class="card-text">Cajeros en turno de tarde</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card text-white bg-secondary mb-3">
+                                <div class="card-header">Turno Noche</div>
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${#lists.size(#lists.filterStartsWith(cajeros, 'turno == \'Noche\''))}">0</h5>
+                                    <p class="card-text">Cajeros en turno de noche</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

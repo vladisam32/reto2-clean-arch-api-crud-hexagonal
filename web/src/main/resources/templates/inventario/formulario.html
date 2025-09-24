@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${editar} ? 'Editar Inventario' : 'Nuevo Inventario'">Formulario de Inventario</title>
+</head>
+<body>
+    <div th:replace="~{layout :: body(titulo=${editar} ? 'Editar Inventario' : 'Nuevo Inventario', contenido=~{::content})}">
+        <div th:fragment="content">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h3 th:text="${editar} ? 'Editar Inventario' : 'Nuevo Inventario'">Formulario de Inventario</h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{${editar ? '/inventario/' + inventario.id() : '/inventario'}}" 
+                          th:object="${inventarioForm}" method="post">
+
+                        <!-- Campo oculto para el ID en caso de edición -->
+                        <input type="hidden" th:if="${editar}" name="id" th:value="${inventario.id()}" />
+
+                        <div class="mb-3" th:if="${!editar}">
+                            <label for="productoId" class="form-label">Producto</label>
+                            <select class="form-select" id="productoId" th:field="*{productoId}" required>
+                                <option value="">Seleccione un producto</option>
+                                <option th:each="producto : ${productosSinInventario}" 
+                                        th:value="${producto.id()}" 
+                                        th:text="${producto.nombre() + ' - $' + producto.precio()}">
+                                    Producto de Ejemplo - $10.00
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3" th:if="${editar}">
+                            <label class="form-label">Producto</label>
+                            <input type="hidden" th:field="*{productoId}" />
+                            <input type="text" class="form-control" th:value="${inventario.producto().nombre()}" readonly />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <input type="number" class="form-control" id="cantidad" th:field="*{cantidad}" min="0" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="stockMinimo" class="form-label">Stock Mínimo</label>
+                            <input type="number" class="form-control" id="stockMinimo" th:field="*{stockMinimo}" min="0" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="stockMaximo" class="form-label">Stock Máximo</label>
+                            <input type="number" class="form-control" id="stockMaximo" th:field="*{stockMaximo}" min="0" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ubicacion" class="form-label">Ubicación</label>
+                            <input type="text" class="form-control" id="ubicacion" th:field="*{ubicacion}" required>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a th:href="@{/inventario}" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save"></i> Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Información adicional para edición -->
+            <div class="card mt-4" th:if="${editar}">
+                <div class="card-header bg-info text-white">
+                    <h3>Información del Producto</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Detalles del Producto</h4>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>ID</th>
+                                    <td th:text="${inventario.producto().id()}">1</td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <td th:text="${inventario.producto().nombre()}">Producto de Ejemplo</td>
+                                </tr>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <td th:text="${inventario.producto().descripcion()}">Descripción del producto</td>
+                                </tr>
+                                <tr>
+                                    <th>Precio</th>
+                                    <td th:text="${'$' + inventario.producto().precio()}">$10.00</td>
+                                </tr>
+                                <tr>
+                                    <th>Categoría</th>
+                                    <td th:text="${inventario.producto().categoria()}">Categoría</td>
+                                </tr>
+                                <tr>
+                                    <th>Código de Barras</th>
+                                    <td th:text="${inventario.producto().codigoBarras()}">123456789</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Estado Actual del Inventario</h4>
+                            <div class="alert" th:classappend="${
+                                inventario.cantidad() < inventario.stockMinimo() ? 'alert-danger' : 
+                                (inventario.cantidad() >= inventario.stockMaximo() ? 'alert-warning' : 'alert-success')
+                            }">
+                                <h5 class="alert-heading" th:text="${
+                                    inventario.cantidad() < inventario.stockMinimo() ? 'Stock Bajo' : 
+                                    (inventario.cantidad() >= inventario.stockMaximo() ? 'Stock Excesivo' : 'Stock Normal')
+                                }">Estado del Stock</h5>
+                                <p>Cantidad actual: <strong th:text="${inventario.cantidad()}">10</strong></p>
+                                <p>Stock mínimo: <strong th:text="${inventario.stockMinimo()}">5</strong></p>
+                                <p>Stock máximo: <strong th:text="${inventario.stockMaximo()}">100</strong></p>
+                                <p>Última reposición: <strong th:text="${#temporals.format(inventario.fechaUltimaReposicion(), 'dd/MM/yyyy')}">01/01/2025</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
